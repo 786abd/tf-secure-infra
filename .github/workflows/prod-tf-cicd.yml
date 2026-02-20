@@ -1,5 +1,5 @@
 #Prod workflow
-name: TF CICD
+name: Prod TF CICD
 
 on: 
   push:
