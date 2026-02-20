@@ -1,0 +1,5 @@
+region              = "ap-south-1"
+vpc_cidr            = "10.5.0.0/16"
+public_subnet_cidr  = "10.5.1.0/24"
+private_subnet_cidr = "10.5.2.0/24"
+instance_type       = "t2.micro"
