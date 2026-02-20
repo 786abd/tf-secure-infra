@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
     
 jobs:
   terraform:
@@ -30,12 +29,15 @@ jobs:
           terraform_version: 1.5.0
 
       - name: Terraform Init
+        working-directory: ./dev
         run: terraform init
 
       - name: Terraform Plan
+        working-directory: ./dev
         run: terraform plan
 
       - name: Terraform Apply
-        if: github.event_name == 'push'
+        if: github.ref == 'refs/heads/main'
+        working-directory: ./dev
         run: terraform apply -auto-approve  
       
