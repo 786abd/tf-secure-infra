@@ -1,3 +1,4 @@
+#Dev workflow
 name: TF CICD
 
 on: 
@@ -8,6 +9,10 @@ on:
 jobs:
   terraform:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./dev
 
     permissions:
       contents: read
@@ -29,15 +34,12 @@ jobs:
           terraform_version: 1.5.0
 
       - name: Terraform Init
-        # working-directory: ./dev
         run: terraform init
 
       - name: Terraform Plan
-        # working-directory: ./dev
         run: terraform plan
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
-        # working-directory: ./dev
         run: terraform apply -auto-approve  
       
